@@ -1,0 +1,112 @@
+package gradingApp;
+
+import java.time.LocalDate;
+import java.util.*;
+
+public class Course {
+	// we want to use enums for subject
+	// year?
+
+	private Integer courseID;
+	private static Integer id = 1111;
+	private Teacher teacher;
+	private String subject;
+	private ArrayList<Student> students;
+	private HashMap<Integer, ArrayList<Exam>> examsByStudent; // studentid, arraylist of an individual student's exams
+	private HashMap<LocalDate, ArrayList<Exam>> examsByTestDate; // exam date, arraylist of all the exams on that day
+
+	public Integer getCourseID() {
+		return courseID;
+	}
+
+	public Teacher getTeacher() {
+		return teacher;
+	}
+
+	public String getSubject() {
+		return subject;
+	}
+
+	public ArrayList<Student> getStudents() {
+		return students;
+	}
+
+	public Course(Teacher teacher, String subject, ArrayList<Student> students) {
+		courseID = id++;
+		this.teacher = teacher;
+		this.subject = subject;
+		this.students = students;
+		examsByStudent = new HashMap<Integer, ArrayList<Exam>>();
+		examsByTestDate = new HashMap<LocalDate, ArrayList<Exam>>();
+
+		// loop through Students
+		for (Student s : students) {
+			Integer id = s.getStudentID();
+			examsByStudent.put(id, new ArrayList<Exam>());
+		}
+	}
+	
+	public Student findStudent(String fname, String lname) {
+		for(int i = 0; i < students.size(); i++) {
+			if(students.get(i).getfName().equals(fname) && students.get(i).getlName().equals(lname)) {
+				return students.get(i);
+			}
+		}
+		throw new InvalidInputException("student not found");
+	}
+
+	public void addExam(ArrayList<Exam> exams) {
+
+		// add the whole classes exam by date
+		examsByTestDate.put(exams.get(0).getTestDate(), exams);
+		
+		// add another exam by each student
+		for (Exam e : exams) {
+			Integer id = e.getStudent().getStudentID();
+			ArrayList<Exam> studentExams = examsByStudent.get(id);
+			studentExams.add(e);
+			examsByStudent.put(id, studentExams);
+
+		}
+	}
+	
+	public double getStudentAverage(Student student) {
+		ArrayList<Exam> studsExam = examsByStudent.get(student.getStudentID());
+		double total = 0;
+		for(Exam e : studsExam) {
+			total += e.getGrade();
+		}
+		return total/studsExam.size();
+	}
+	
+	public double getClassAverageForTest(String date) {
+		return getClassAverageForTest(LocalDate.parse(date));
+	}
+	
+	public double getClassAverageForTest(LocalDate date) {
+		if(!examsByTestDate.containsKey(date)) {
+			throw new InvalidInputException("Invalid test date");
+		}
+		ArrayList<Exam> exams = examsByTestDate.get(date);
+		double total = 0;
+		for(int i = 0; i < exams.size(); i++) {
+			total += exams.get(i).getGrade();
+		}
+		double avg = total / exams.size();
+		return avg;		
+	}
+	
+	public double getClassAverageForCourse() {
+		Set<LocalDate> allExamDates = examsByTestDate.keySet();
+		Iterator <LocalDate> iter = allExamDates.iterator();
+		double total = 0;
+		int count = 0;
+		while(iter.hasNext()) {
+			LocalDate date = iter.next();
+			double testAvg = getClassAverageForTest(date);
+			total += testAvg;
+			count++;
+		}
+		return total/count;
+	}
+}
