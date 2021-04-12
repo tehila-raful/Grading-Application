@@ -6,39 +6,30 @@ public class Teacher implements Comparable<Teacher>{
 	
 	private Integer teacherID;
 	private static Integer id = 2222;
-	private String fName;
-	private String lName;
+	private String name;
+	//private String lName;
 	//private LocalDate dob;
 	
 	/*public Teacher(String fName, String lName, String dob) {
 		this(fName, lName, LocalDate.parse(dob));
 	}*/
 	
-	public Teacher(String fName, String lName) {
-		this.fName = fName;
-		this.lName = lName;
+	public Teacher(String name) {
+		this.name = name;
 		teacherID = id++;
 	}
 
 	@Override
 	public String toString() {
-		return "Teacher [teacherID=" + teacherID + ", fName=" + fName + ", lName=" + lName + "]";
+		return "Teacher [teacherID=" + teacherID + ", Name=" + name + "]";
 	}
 
-	public String getfName() {
-		return fName;
+	public String getName() {
+		return name;
 	}
 
-	public void setfName(String fName) {
-		this.fName = fName;
-	}
-
-	public String getlName() {
-		return lName;
-	}
-
-	public void setlName(String lName) {
-		this.lName = lName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public Integer getTeacherID() {

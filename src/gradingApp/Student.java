@@ -6,17 +6,16 @@ public class Student implements Comparable<Student> {
 	
 	private Integer studentID;
 	private static Integer id = 3333;
-	private String fName;
-	private String lName;
+	private String name;
+	//private String lName;
 	//private LocalDate dob;
 	
 	/*public Student(String fName, String lName, String dob) {
 		this(fName, lName, LocalDate.parse(dob));
 	}*/
 	
-	public Student(String fName, String lName) {
-		this.fName = fName;
-		this.lName = lName;
+	public Student(String name) {
+		this.name = name;
 		studentID = id++;
 	}
 	
@@ -24,20 +23,12 @@ public class Student implements Comparable<Student> {
 		return studentID;
 	}
 
-	public String getfName() {
-		return fName;
+	public String getName() {
+		return name;
 	}
 
-	public void setfName(String fName) {
-		this.fName = fName;
-	}
-
-	public String getlName() {
-		return lName;
-	}
-
-	public void setlName(String lName) {
-		this.lName = lName;
+	public void setName(String fName) {
+		this.name = fName;
 	}
 
 	
@@ -62,7 +53,7 @@ public class Student implements Comparable<Student> {
 
 	@Override
 	public String toString() {
-		return getfName() + " " + getlName() ;
+		return name ;
 	}
 	
 	@Override

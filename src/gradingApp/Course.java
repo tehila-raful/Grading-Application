@@ -46,9 +46,34 @@ public class Course {
 		}
 	}
 	
-	public Student findStudent(String fname, String lname) {
+	public String displayGrades(String date) {
+		StringBuilder sb = new StringBuilder();
+		if(!examsByTestDate.containsKey(LocalDate.parse(date))) {
+			throw new InvalidInputException("Invalid test date");
+		}
+		ArrayList<Exam> exams = examsByTestDate.get(LocalDate.parse(date));
+		sb.append("Exam Date " + date + "\n");
+		for(int i = 0; i < exams.size(); i++) {
+			sb.append(exams.get(i).getStudent() + " " + exams.get(i).getGrade() + "\n");
+		}
+		return sb.toString();
+		
+	}
+	
+	public void curveExamGrades(String date, int numPoints) {
+		if(!examsByTestDate.containsKey(LocalDate.parse(date))) {
+			throw new InvalidInputException("Invalid test date");
+		}
+		ArrayList<Exam> exams = examsByTestDate.get(LocalDate.parse(date));
+	
+		for(int i = 0; i < exams.size(); i++) {
+			exams.get(i).setGrade(exams.get(i).getGrade() + numPoints);
+		}
+	}
+	
+	public Student findStudent(String name) {
 		for(int i = 0; i < students.size(); i++) {
-			if(students.get(i).getfName().equals(fname) && students.get(i).getlName().equals(lname)) {
+			if(students.get(i).getName().equals(name)) {
 				return students.get(i);
 			}
 		}
