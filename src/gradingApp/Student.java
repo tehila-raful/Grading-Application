@@ -1,4 +1,4 @@
-package gradingApp;
+package gradingapp;
 
 import java.time.LocalDate;
 

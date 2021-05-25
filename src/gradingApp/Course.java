@@ -1,4 +1,4 @@
-package gradingApp;
+package gradingapp;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -30,6 +30,22 @@ public class Course {
 	public ArrayList<Student> getStudents() {
 		return students;
 	}
+        
+        public ArrayList<String> getGradesByExamDate(String date){
+            ArrayList<String> grades = new ArrayList<String>();
+            
+            try{
+                 ArrayList<Exam> exams = examsByTestDate.get(LocalDate.parse(date));
+            for(int i = 0; i < exams.size(); i++) {
+		grades.add(exams.get(i).getStudent() + " " + exams.get(i).getGrade() + "\n");
+            }
+            return grades; 
+            }
+            catch(InvalidInputException e){
+                
+            }
+           return null; 
+        }
 
 	public Course(Teacher teacher, String subject, ArrayList<Student> students) {
 		courseID = id++;

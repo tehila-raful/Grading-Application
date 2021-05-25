@@ -1,4 +1,4 @@
-package gradingApp;
+package gradingapp;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 
 public class UseGradingApp {
 	
-	public static void main(String[] args) throws Exception {
+	/*public static void main(String[] args) throws Exception {
 		HashMap<Integer,Course> courses = new HashMap<Integer, Course>(); //key: courseID, value: course
 		DecimalFormat df = new DecimalFormat("#.##");
 		int choice = 0;
@@ -69,7 +69,7 @@ public class UseGradingApp {
 				break;
 			}
 		} while(choice >= 1 && choice <=6);	
-	}
+	}*/
 	
 	
 	

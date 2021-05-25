@@ -1,4 +1,4 @@
-package gradingApp;
+package gradingapp;
 
 public class InvalidInputException extends RuntimeException{
 	public InvalidInputException() {
