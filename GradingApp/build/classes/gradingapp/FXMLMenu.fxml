@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gradingapp.FXMLMenuController">
+   <top>
+      <MenuBar fx:id="menuBar" BorderPane.alignment="CENTER">
+        <menus>
+          <Menu fx:id="menuViewStudents" mnemonicParsing="false" text="View ">
+            <items>
+              <MenuItem fx:id="menuItemViewStudents" mnemonicParsing="false" onAction="#viewStudentsClicked" text="View Students" />
+                  <MenuItem fx:id="menuItemViewGrades" mnemonicParsing="false" onAction="#viewGradesClicked" text="View Grades" />
+            </items>
+          </Menu>
+          <Menu fx:id="menuExam" mnemonicParsing="false" text="Exams">
+               <items>
+                  <MenuItem fx:id="menuAddExam" mnemonicParsing="false" onAction="#addExamClicked" text="Add Exam" />
+               </items></Menu>
+          <Menu fx:id="menuAverages" mnemonicParsing="false" text="Averages">
+            <items>
+              <MenuItem fx:id="menuItemAverageByClass" mnemonicParsing="false" onAction="#AverageforClassClicked" text="Average for Class" />
+                  <MenuItem fx:id="menuItemAverageStudents" mnemonicParsing="false" onAction="#AverageforStudentClicked" text="Average for Student" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Other">
+               <items>
+                  <MenuItem fx:id="menuExit" mnemonicParsing="false" onAction="#ExitClicked" text="Exit " />
+               </items></Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <ListView fx:id="listStudents" prefHeight="367.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
+   </center>
+   <bottom>
+      <Button fx:id="btnLogOut" mnemonicParsing="false" onAction="#btnLogOutClicked" text="Log Out" BorderPane.alignment="BOTTOM_RIGHT">
+         <BorderPane.margin>
+            <Insets left="10.0" />
+         </BorderPane.margin>
+      </Button>
+   </bottom>
+</BorderPane>

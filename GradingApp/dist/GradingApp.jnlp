@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="GradingApp.jnlp">
+  <information>
+    <title>GradingApp</title>
+    <vendor>tehil</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="GradingApp.jar" size="33161" download="eager" />
+    <jar href="lib\gson-2.7-javadoc.jar" size="261396" download="eager" />
+    <jar href="lib\gson-2.7.jar" size="231952" download="eager" />
+  </resources>
+  <jfx:javafx-desc  width="800" height="600" main-class="gradingapp.GradingApp"  name="GradingApp" />
+  <update check="always"/>
+</jnlp>
